@@ -359,61 +359,29 @@
       
         
           
-            <p>最近在读《Thinking in Java 》，在博客上分享下笔记。小白入门，欢迎批评指正！</p>
-<h2 id="Java与C-在内存分配上的异同"><a href="#Java与C-在内存分配上的异同" class="headerlink" title="Java与C++在内存分配上的异同"></a>Java与C++在内存分配上的异同</h2><table>
-<thead>
-<tr>
-<th style="text-align:center">内存区域</th>
-<th style="text-align:center">共性</th>
-<th style="text-align:center">C++</th>
-<th style="text-align:center">Java</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">寄存器</td>
-<td style="text-align:center">位于处理器内部，最快的存储区，由编译器根据需求进行分配，无法直接控制，也不能在程序中感觉到寄存器存在的任何迹象。</td>
-<td style="text-align:center">C和C++允许向编译器建议寄存器的分配方式。</td>
-<td style="text-align:center"></td>
-</tr>
-<tr>
-<td style="text-align:center">栈</td>
-<td style="text-align:center">位于通用RAM中，由编译器自动分配释放，存放基本数据类型及对象引用等。创建程序时，系统知道存储在栈内的所有项的确切生命周期。</td>
-<td style="text-align:center">C++的局部对象也分配在栈中，函数结束后对象被自动销毁。</td>
-<td style="text-align:center">Java不允许创建局部对象，所以Java对象永远不可能存储于此</td>
-</tr>
-<tr>
-<td style="text-align:center">堆</td>
-<td style="text-align:center">位于RAM区，供程序员分配的内存区域（new、malloc）</td>
-<td style="text-align:center">C++中new、malloc创建的对象或分配的内存空间，使用完后必须手动释放delete、free，否则可能会出现内存泄漏</td>
-<td style="text-align:center">Java中new出来的对象或数组。由JVM垃圾回收器进行管理，使用后无需手动释放。</td>
-</tr>
-<tr>
-<td style="text-align:center">其他</td>
-<td style="text-align:center"></td>
-<td style="text-align:center">静态区、文字常量区、程序代码区</td>
-<td style="text-align:center">方法区（也叫静态区），存放整个程序中唯一的元素，如class和static变量，能被所有线程共享。</td>
-</tr>
-</tbody>
-</table>
-<h2 id="局部对象（Java不运行创建局部对象）"><a href="#局部对象（Java不运行创建局部对象）" class="headerlink" title="局部对象（Java不运行创建局部对象）"></a>局部对象（Java不运行创建局部对象）</h2><p>局部对象是C++中的概念，指不是通过new的方式创建的对象，存储于栈中，随函数结束而销毁。Java不允许创建局部变量，故Java对象均存储在堆上。因此，C++中不要反悔局部对象的指针和引用（更具体地说，不能返回超过栈顶的对象的指针和引用）。可以返回的对象包括：</p>
-<ol>
-<li>通过new分配的对象</li>
-<li>static对象</li>
-<li>函数调用之前创建的局部对象  </li>
-</ol>
-<p>举以下代码为例，可以看到，test0生命周期结束后，局部变量自动释放。<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"iostream"</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"> </div><div class="line"><span class="keyword">class</span> Person</div><div class="line">&#123;</div><div class="line">	<span class="keyword">public</span>:</div><div class="line">	    Person(<span class="keyword">int</span> a);</div><div class="line">	    ~Person();</div><div class="line">	    <span class="function"><span class="keyword">int</span> <span class="title">getId</span><span class="params">()</span></span>;</div><div class="line">	 </div><div class="line">	<span class="keyword">private</span>:</div><div class="line">	    <span class="keyword">int</span> id;</div><div class="line">&#125;;</div><div class="line"> </div><div class="line">Person::Person(<span class="keyword">int</span> a)</div><div class="line">&#123;</div><div class="line">    id = a;</div><div class="line">&#125;</div><div class="line"> </div><div class="line">Person::~Person()</div><div class="line">&#123;</div><div class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"释放对象: "</span>&lt;&lt; id &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">&#125;</div><div class="line"> </div><div class="line"><span class="keyword">int</span> Person::getId()</div><div class="line">&#123;</div><div class="line">    <span class="keyword">return</span> id;</div><div class="line">&#125;</div><div class="line"> </div><div class="line"><span class="comment">/*返回局部对象的指针*/</span></div><div class="line"><span class="function">Person *<span class="title">test0</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">    Person *p = &amp;Person(<span class="number">0</span>);</div><div class="line">    <span class="keyword">return</span> p;</div><div class="line">&#125;</div><div class="line"><span class="comment">/*返回new创建的对象的指针*/</span></div><div class="line"><span class="function">Person *<span class="title">test1</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">    Person *p = <span class="keyword">new</span> Person(<span class="number">1</span>);</div><div class="line">    <span class="keyword">return</span> p;</div><div class="line">&#125;</div><div class="line"><span class="comment">/*返回static对象的指针*/</span></div><div class="line"><span class="function">Person *<span class="title">test2</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">    <span class="function"><span class="keyword">static</span> Person <span class="title">temp</span><span class="params">(<span class="number">2</span>)</span></span>;<span class="comment">//在静态区创建的对象，随程序一起结束</span></div><div class="line">    Person *p = &amp;temp;  </div><div class="line">    <span class="keyword">return</span> p;</div><div class="line">&#125;</div><div class="line"> </div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">    Person *p0, *p1, *p2;</div><div class="line">    p0 = test0();</div><div class="line">    p1 = test1();</div><div class="line">    p2 = test2();</div><div class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"p0 ID: "</span> &lt;&lt; p0-&gt;getId() &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"p1 ID: "</span> &lt;&lt; p1-&gt;getId() &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"p2 ID: "</span> &lt;&lt; p2-&gt;getId() &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">    <span class="keyword">delete</span> p1;</div><div class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"p1 ID: "</span> &lt;&lt; p1-&gt;getId() &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">    <span class="comment">//delete p2;  报错，不能delete静态对象</span></div><div class="line">    system(<span class="string">"pause"</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>输出：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">释放对象: 0</div><div class="line">p0 ID: 17047552</div><div class="line">p1 ID: 1</div><div class="line">p2 ID: 2</div><div class="line">释放对象: 1</div><div class="line">p1 ID: -572662307</div></pre></td></tr></table></figure></p>
-<h2 id="C-堆内存可以手动释放，栈和静态区不能手动释放"><a href="#C-堆内存可以手动释放，栈和静态区不能手动释放" class="headerlink" title="C++堆内存可以手动释放，栈和静态区不能手动释放"></a>C++堆内存可以手动释放，栈和静态区不能手动释放</h2><p>c++ 栈中和静态区建立的对象都不能delete，因为栈和静态区都不是程序员直接可操作存储区。而java不存在这些说法，因为java对象都是new出来的（String似乎是个例外）。<br>参见以下代码，Person类不变。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">    <span class="function">Person <span class="title">p0</span><span class="params">(<span class="number">0</span>)</span></span>;</div><div class="line">    <span class="function"><span class="keyword">static</span> Person <span class="title">p1</span><span class="params">(<span class="number">1</span>)</span></span>;</div><div class="line">    Person *p2 = <span class="keyword">new</span> Person(<span class="number">2</span>);</div><div class="line"> </div><div class="line">    <span class="keyword">delete</span> &amp;p0;  <span class="comment">//报错，栈局部对象</span></div><div class="line">    <span class="keyword">delete</span> &amp;p1;  <span class="comment">//报错，静态区对象</span></div><div class="line">    <span class="keyword">delete</span> p2;   <span class="comment">//正确，堆对象</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ol>
-<li>无论是java还是c++， 函数可以返回new出来的对象（确切说，存储在堆上的对象）的引用（或c++指针）</li>
-<li>c++不可以返回局部对象的引用或指针</li>
-</ol>
-<p>参考文献<br>Think in Java<br><a href="http://www.cnblogs.com/Binhua-Liu/archive/2010/08/24/1803095.html" target="_blank" rel="external">C/C++堆栈指引</a><br><a href="https://my.oschina.net/u/1464779/blog/225590" target="_blank" rel="external">深入理解Java的栈与堆栈</a></p>
-<p>注意<br><a href="http://blog.csdn.net/clam_clam/article/details/6829960" target="_blank" rel="external">JAVA中的数据存储（堆及堆栈）</a>中所说的栈中数据共享似乎有误。</p>
+          最近在读《Thinking in Java 》，在博客上分享下笔记。小白入门，欢迎批评指正！
+Java与C++在内存分配上的异同
 
-          
+
+内存区域
+共性
+C++
+Java
+
+
+
+
+寄存器
+位于处理器内部，最快的存储区，由编译器根据需求进行分配，无法直接控制，也不能在程序中感觉到寄存器存在的任何迹象。
+C
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/02/22/Java-C-堆栈详解/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -532,17 +500,15 @@
       
         
           
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
-          
+          Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in 
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/02/22/hello-world/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
