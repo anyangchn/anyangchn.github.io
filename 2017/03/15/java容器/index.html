@@ -129,7 +129,7 @@ Vector/Stack
 
 排序
 Collecti">
-<meta property="og:updated_time" content="2017-03-15T14:04:47.246Z">
+<meta property="og:updated_time" content="2017-03-15T14:09:05.587Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java容器概述">
 <meta name="twitter:description" content="ListList是有序序列，允许插入重复元素。
@@ -437,7 +437,7 @@ Collecti">
 </tr>
 </tbody>
 </table>
-<h4 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h4><ul>
+<h3 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h3><ul>
 <li>Collections.sort函数在1.8中改为了调用List的sort方法，之前List中不含sort方法。  </li>
 <li>sort方法先把集合转为数组，然后使用Arrays.sort进行排序，最后再更新集合。Arrays.sort在1.7版本前采用归并排序，1.7版本后改用timsort（适应性归并）</li>
 <li>ArrayList重写了sort方法，直接对成员数组进行排序。<blockquote>
@@ -445,7 +445,7 @@ Collecti">
 </blockquote>
 </li>
 </ul>
-<h4 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h4><ul>
+<h3 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h3><ul>
 <li>ArrayList和LinkedArrayList都是线程不安全的，Vector和Stack是线程安全的；</li>
 <li>ArrayList在随机访问get()和set()上性能优越；</li>
 <li>LinkedList在增删add()和remove()上性能优越。</li>
@@ -470,13 +470,13 @@ Collecti">
 </tr>
 </tbody>
 </table>
-<h4 id="HashMap与TreeMap、LinkedHashMap性能对比"><a href="#HashMap与TreeMap、LinkedHashMap性能对比" class="headerlink" title="HashMap与TreeMap、LinkedHashMap性能对比"></a>HashMap与TreeMap、LinkedHashMap性能对比</h4><ul>
+<h3 id="HashMap与TreeMap、LinkedHashMap性能对比"><a href="#HashMap与TreeMap、LinkedHashMap性能对比" class="headerlink" title="HashMap与TreeMap、LinkedHashMap性能对比"></a>HashMap与TreeMap、LinkedHashMap性能对比</h3><ul>
 <li>TreeMap通常慢于HashMap，尤其是增删更慢，因为TreeMap要维护红黑树的次序。</li>
 <li>通常在需要有序性操作时才选择用TreeMap。</li>
 <li>LinkedHashMap略慢于HashMap，但迭代遍历Map性能较好，因为它需要维护一个链表以保持Map中key-value对的添加顺序。</li>
 </ul>
-<h4 id="HashMap与Hashtable的区别"><a href="#HashMap与Hashtable的区别" class="headerlink" title="HashMap与Hashtable的区别"></a>HashMap与Hashtable的区别</h4><ul>
-<li>HashMap继承至AbstractMap，AbstractMap实现了Map接口;Hashtable继承至Dictionary，实现了Map接口。</li>
+<h3 id="HashMap与Hashtable的区别"><a href="#HashMap与Hashtable的区别" class="headerlink" title="HashMap与Hashtable的区别"></a>HashMap与Hashtable的区别</h3><ul>
+<li>HashMap继承至AbstractMap，AbstractMap实现了Map接口；Hashtable继承至Dictionary，实现了Map接口。</li>
 <li>HashMap不是线程安全的；Hashtable是线程安全的。</li>
 <li>HashMap支持key和value为null；Hashtable不支持。</li>
 <li>HashMap对key的hashcode进行二次hash，然后对数组长度取模；Hashtable直接用key的hashcode对数组长度取模。</li>
@@ -661,7 +661,7 @@ Collecti">
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#List"><span class="nav-number">1.</span> <span class="nav-text">List</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#排序"><span class="nav-number">1.0.1.</span> <span class="nav-text">排序</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#区别"><span class="nav-number">1.0.2.</span> <span class="nav-text">区别</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Queue"><span class="nav-number">2.</span> <span class="nav-text">Queue</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Map"><span class="nav-number">3.</span> <span class="nav-text">Map</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#HashMap与TreeMap、LinkedHashMap性能对比"><span class="nav-number">3.0.1.</span> <span class="nav-text">HashMap与TreeMap、LinkedHashMap性能对比</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#HashMap与Hashtable的区别"><span class="nav-number">3.0.2.</span> <span class="nav-text">HashMap与Hashtable的区别</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#List"><span class="nav-number">1.</span> <span class="nav-text">List</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#排序"><span class="nav-number">1.1.</span> <span class="nav-text">排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#区别"><span class="nav-number">1.2.</span> <span class="nav-text">区别</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Queue"><span class="nav-number">2.</span> <span class="nav-text">Queue</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Map"><span class="nav-number">3.</span> <span class="nav-text">Map</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#HashMap与TreeMap、LinkedHashMap性能对比"><span class="nav-number">3.1.</span> <span class="nav-text">HashMap与TreeMap、LinkedHashMap性能对比</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HashMap与Hashtable的区别"><span class="nav-number">3.2.</span> <span class="nav-text">HashMap与Hashtable的区别</span></a></li></ol></li></ol></div>
             
 
           </div>
