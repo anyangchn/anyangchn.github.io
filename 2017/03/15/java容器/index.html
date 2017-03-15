@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Java,容器," />
 
 
 
@@ -87,19 +87,70 @@
 
 
 
-<meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick">
+<meta name="description" content="ListList是有序序列，允许插入重复元素。
+
+
+
+ArrayList
+LinkedList
+Vector/Stack
+
+
+
+
+动态数组实现的顺序存储，默认初始化长度为10，数组会自动扩容（1.5倍+1）；可以通过ensureCapacity(int) 和 trimToSize()调整数组大小
+双向链表存储，get方法很慢
+古老的java集合类，线程安全的，性能较差
+
+
+
+排序
+Collecti">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://anyangchn.github.io/2017/02/22/hello-world/index.html">
+<meta property="og:title" content="Java容器概述">
+<meta property="og:url" content="http://anyangchn.github.io/2017/03/15/java容器/index.html">
 <meta property="og:site_name" content="ANYANG">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick">
-<meta property="og:updated_time" content="2017-02-22T06:19:07.327Z">
+<meta property="og:description" content="ListList是有序序列，允许插入重复元素。
+
+
+
+ArrayList
+LinkedList
+Vector/Stack
+
+
+
+
+动态数组实现的顺序存储，默认初始化长度为10，数组会自动扩容（1.5倍+1）；可以通过ensureCapacity(int) 和 trimToSize()调整数组大小
+双向链表存储，get方法很慢
+古老的java集合类，线程安全的，性能较差
+
+
+
+排序
+Collecti">
+<meta property="og:updated_time" content="2017-03-15T14:04:47.246Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick">
+<meta name="twitter:title" content="Java容器概述">
+<meta name="twitter:description" content="ListList是有序序列，允许插入重复元素。
+
+
+
+ArrayList
+LinkedList
+Vector/Stack
+
+
+
+
+动态数组实现的顺序存储，默认初始化长度为10，数组会自动扩容（1.5倍+1）；可以通过ensureCapacity(int) 和 trimToSize()调整数组大小
+双向链表存储，get方法很慢
+古老的java集合类，线程安全的，性能较差
+
+
+
+排序
+Collecti">
 
 
 
@@ -127,13 +178,13 @@ Quick">
 
 
 
-  <link rel="canonical" href="http://anyangchn.github.io/2017/02/22/hello-world/"/>
+  <link rel="canonical" href="http://anyangchn.github.io/2017/03/15/java容器/"/>
 
 
 
 
 
-  <title> Hello World | ANYANG </title>
+  <title> Java容器概述 | ANYANG </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -262,7 +313,7 @@ Quick">
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://anyangchn.github.io/2017/02/22/hello-world/">
+  <link itemprop="mainEntityOfPage" href="http://anyangchn.github.io/2017/03/15/java容器/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="An Yang">
@@ -286,7 +337,7 @@ Quick">
             
             
               
-                Hello World
+                Java容器概述
               
             
           </h1>
@@ -301,8 +352,8 @@ Quick">
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-02-22T14:18:50+08:00">
-                2017-02-22
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-15T20:56:12+08:00">
+                2017-03-15
               </time>
             
 
@@ -312,6 +363,28 @@ Quick">
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -320,8 +393,8 @@ Quick">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/02/22/hello-world/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/02/22/hello-world/" itemprop="commentCount"></span>
+                <a href="/2017/03/15/java容器/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/15/java容器/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -347,15 +420,72 @@ Quick">
       
 
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+        <h2 id="List"><a href="#List" class="headerlink" title="List"></a>List</h2><p>List是有序序列，允许插入重复元素。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">ArrayList</th>
+<th style="text-align:left">LinkedList</th>
+<th style="text-align:left">Vector/Stack</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">动态数组实现的顺序存储，默认初始化长度为10，数组会自动扩容（1.5倍+1）；<br><br>可以通过ensureCapacity(int) 和 trimToSize()调整数组大小</td>
+<td style="text-align:left">双向链表存储，get方法很慢</td>
+<td style="text-align:left">古老的java集合类，线程安全的，性能较差</td>
+</tr>
+</tbody>
+</table>
+<h4 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h4><ul>
+<li>Collections.sort函数在1.8中改为了调用List的sort方法，之前List中不含sort方法。  </li>
+<li>sort方法先把集合转为数组，然后使用Arrays.sort进行排序，最后再更新集合。Arrays.sort在1.7版本前采用归并排序，1.7版本后改用timsort（适应性归并）</li>
+<li>ArrayList重写了sort方法，直接对成员数组进行排序。<blockquote>
+<p>回头看看timsort原理</p>
+</blockquote>
+</li>
+</ul>
+<h4 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h4><ul>
+<li>ArrayList和LinkedArrayList都是线程不安全的，Vector和Stack是线程安全的；</li>
+<li>ArrayList在随机访问get()和set()上性能优越；</li>
+<li>LinkedList在增删add()和remove()上性能优越。</li>
+</ul>
+<h2 id="Queue"><a href="#Queue" class="headerlink" title="Queue"></a>Queue</h2><h2 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h2><table>
+<thead>
+<tr>
+<th style="text-align:left">HashMap</th>
+<th style="text-align:left">LinkedHashMap</th>
+<th style="text-align:left">TreeMap</th>
+<th style="text-align:left">WeekHashMap</th>
+<th>IdentityHashMap</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">哈希表的拉链法实现（数组+链表）<br><br>不支持有序性操作 <br><br> 支持null作为key和value，所以应该用containsKey()来判断是否存在该键</td>
+<td style="text-align:left">继承至HashMap，使用双向链表维护了key-value对的插入顺序（Entry&lt; k, v &gt; before, after)<br><br>如果按顺序插入的话支持有序性操作</td>
+<td style="text-align:left">红黑树结构<br><br>支持有序性操作</td>
+<td style="text-align:left">key只保留对实际对象的弱引用，如果key所引用的对象没有被其他强引用变量所引用，可能会被垃圾回收，WeekHashMap也会自动删除这些key所对应的key-value值</td>
+<td>对key相等的要求更严格，只有key1==key2时才认为两个key相等<br><br>普通HashMap只要求key1、key2非空时二者equals()。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="HashMap与TreeMap、LinkedHashMap性能对比"><a href="#HashMap与TreeMap、LinkedHashMap性能对比" class="headerlink" title="HashMap与TreeMap、LinkedHashMap性能对比"></a>HashMap与TreeMap、LinkedHashMap性能对比</h4><ul>
+<li>TreeMap通常慢于HashMap，尤其是增删更慢，因为TreeMap要维护红黑树的次序。</li>
+<li>通常在需要有序性操作时才选择用TreeMap。</li>
+<li>LinkedHashMap略慢于HashMap，但迭代遍历Map性能较好，因为它需要维护一个链表以保持Map中key-value对的添加顺序。</li>
+</ul>
+<h4 id="HashMap与Hashtable的区别"><a href="#HashMap与Hashtable的区别" class="headerlink" title="HashMap与Hashtable的区别"></a>HashMap与Hashtable的区别</h4><ul>
+<li>HashMap继承至AbstractMap，AbstractMap实现了Map接口;Hashtable继承至Dictionary，实现了Map接口。</li>
+<li>HashMap不是线程安全的；Hashtable是线程安全的。</li>
+<li>HashMap支持key和value为null；Hashtable不支持。</li>
+<li>HashMap对key的hashcode进行二次hash，然后对数组长度取模；Hashtable直接用key的hashcode对数组长度取模。</li>
+<li>HashMap快于Hashtable，Hashtable已经被淘汰了。</li>
+<li>HashMap初始容量为16，扩容为2倍；Hashtable初始容量为11，扩容为2倍+1。<blockquote>
+<p>HashSet、HashMap、Hashtable默认的负载极限是0.7</p>
+</blockquote>
+</li>
+</ul>
 
       
     </div>
@@ -377,6 +507,14 @@ Quick">
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/Java/" rel="tag"># Java</a>
+          
+            <a href="/tags/容器/" rel="tag"># 容器</a>
+          
+        </div>
+      
 
       
         
@@ -386,15 +524,15 @@ Quick">
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2017/03/10/thread/" rel="next" title="">
+                <i class="fa fa-chevron-left"></i> 
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/02/22/Java-C-堆栈详解/" rel="prev" title="Java/C++堆栈详解">
-                Java/C++堆栈详解 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -420,8 +558,8 @@ Quick">
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2017/02/22/hello-world/"
-           data-title="Hello World" data-url="http://anyangchn.github.io/2017/02/22/hello-world/">
+      <div class="ds-thread" data-thread-key="2017/03/15/java容器/"
+           data-title="Java容器概述" data-url="http://anyangchn.github.io/2017/03/15/java容器/">
       </div>
     
   </div>
@@ -523,7 +661,7 @@ Quick">
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-number">1.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-number">1.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-number">1.2.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-number">1.3.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-number">1.4.</span> <span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#List"><span class="nav-number">1.</span> <span class="nav-text">List</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#排序"><span class="nav-number">1.0.1.</span> <span class="nav-text">排序</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#区别"><span class="nav-number">1.0.2.</span> <span class="nav-text">区别</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Queue"><span class="nav-number">2.</span> <span class="nav-text">Queue</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Map"><span class="nav-number">3.</span> <span class="nav-text">Map</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#HashMap与TreeMap、LinkedHashMap性能对比"><span class="nav-number">3.0.1.</span> <span class="nav-text">HashMap与TreeMap、LinkedHashMap性能对比</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#HashMap与Hashtable的区别"><span class="nav-number">3.0.2.</span> <span class="nav-text">HashMap与Hashtable的区别</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
