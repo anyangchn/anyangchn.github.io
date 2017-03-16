@@ -99,13 +99,8 @@ Vector/Stack
 
 
 动态数组实现的顺序存储，默认初始化长度为10，数组会自动扩容（1.5倍+1）；可以通过ensureCapacity(int) 和 trimToSize()调整数组大小
-双向链表存储，get方法很慢
-古老的java集合类，线程安全的，性能较差
-
-
-
-排序
-Collecti">
+双向链表存储，get方法很慢继承了Deque，可以当成双端队列用
+古老的java集合类，线程安全的，性">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java容器概述">
 <meta property="og:url" content="http://anyangchn.github.io/2017/03/15/java容器/index.html">
@@ -122,14 +117,9 @@ Vector/Stack
 
 
 动态数组实现的顺序存储，默认初始化长度为10，数组会自动扩容（1.5倍+1）；可以通过ensureCapacity(int) 和 trimToSize()调整数组大小
-双向链表存储，get方法很慢
-古老的java集合类，线程安全的，性能较差
-
-
-
-排序
-Collecti">
-<meta property="og:updated_time" content="2017-03-15T14:09:05.587Z">
+双向链表存储，get方法很慢继承了Deque，可以当成双端队列用
+古老的java集合类，线程安全的，性">
+<meta property="og:updated_time" content="2017-03-16T13:35:51.903Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java容器概述">
 <meta name="twitter:description" content="ListList是有序序列，允许插入重复元素。
@@ -144,13 +134,8 @@ Vector/Stack
 
 
 动态数组实现的顺序存储，默认初始化长度为10，数组会自动扩容（1.5倍+1）；可以通过ensureCapacity(int) 和 trimToSize()调整数组大小
-双向链表存储，get方法很慢
-古老的java集合类，线程安全的，性能较差
-
-
-
-排序
-Collecti">
+双向链表存储，get方法很慢继承了Deque，可以当成双端队列用
+古老的java集合类，线程安全的，性">
 
 
 
@@ -432,7 +417,7 @@ Collecti">
 <tbody>
 <tr>
 <td style="text-align:left">动态数组实现的顺序存储，默认初始化长度为10，数组会自动扩容（1.5倍+1）；<br><br>可以通过ensureCapacity(int) 和 trimToSize()调整数组大小</td>
-<td style="text-align:left">双向链表存储，get方法很慢</td>
+<td style="text-align:left">双向链表存储，get方法很慢<br><br>继承了Deque，可以当成双端队列用</td>
 <td style="text-align:left">古老的java集合类，线程安全的，性能较差</td>
 </tr>
 </tbody>
@@ -450,7 +435,9 @@ Collecti">
 <li>ArrayList在随机访问get()和set()上性能优越；</li>
 <li>LinkedList在增删add()和remove()上性能优越。</li>
 </ul>
-<h2 id="Queue"><a href="#Queue" class="headerlink" title="Queue"></a>Queue</h2><h2 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h2><table>
+<h2 id="Queue"><a href="#Queue" class="headerlink" title="Queue"></a>Queue</h2><p>主要两个接口，Queue和Deque。PriorityQueue实现了Queue，但是排列顺序是元素的大小，因此，peek()和poll()得到的是最小的元素。</p>
+<p>ArrayDeque实现了Deque，是一个双端队列，可以当做栈用，也可以当做队列用。LinkedList也实现了Deque。</p>
+<h2 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h2><table>
 <thead>
 <tr>
 <th style="text-align:left">HashMap</th>
@@ -475,17 +462,62 @@ Collecti">
 <li>通常在需要有序性操作时才选择用TreeMap。</li>
 <li>LinkedHashMap略慢于HashMap，但迭代遍历Map性能较好，因为它需要维护一个链表以保持Map中key-value对的添加顺序。</li>
 </ul>
-<h3 id="HashMap与Hashtable的区别"><a href="#HashMap与Hashtable的区别" class="headerlink" title="HashMap与Hashtable的区别"></a>HashMap与Hashtable的区别</h3><ul>
-<li>HashMap继承至AbstractMap，AbstractMap实现了Map接口；Hashtable继承至Dictionary，实现了Map接口。</li>
-<li>HashMap不是线程安全的；Hashtable是线程安全的。</li>
-<li>HashMap支持key和value为null；Hashtable不支持。</li>
-<li>HashMap对key的hashcode进行二次hash，然后对数组长度取模；Hashtable直接用key的hashcode对数组长度取模。</li>
-<li>HashMap快于Hashtable，Hashtable已经被淘汰了。</li>
-<li>HashMap初始容量为16，扩容为2倍；Hashtable初始容量为11，扩容为2倍+1。<blockquote>
+<h3 id="HashMap与Hashtable的区别"><a href="#HashMap与Hashtable的区别" class="headerlink" title="HashMap与Hashtable的区别"></a>HashMap与Hashtable的区别</h3><table>
+<thead>
+<tr>
+<th style="text-align:center">HashMap</th>
+<th style="text-align:left">HashMap</th>
+<th style="text-align:left">Hashtable</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">继承</td>
+<td style="text-align:left">HashMap继承至AbstractMap，AbstractMap实现了Map接口</td>
+<td style="text-align:left">Hashtable继承至Dictionary，实现了Map接口</td>
+</tr>
+<tr>
+<td style="text-align:center">线程安全</td>
+<td style="text-align:left">非线程安全</td>
+<td style="text-align:left">线程安全</td>
+</tr>
+<tr>
+<td style="text-align:center">迭代器</td>
+<td style="text-align:left">HashMap的迭代器是fail-fast机制的；<br>其他线程修改HashMap结构，会抛出异常；<br>但迭代器本身的remove()方法不会</td>
+<td style="text-align:left">Hashtable的迭代器不是fail-fast机制</td>
+</tr>
+<tr>
+<td style="text-align:center">null</td>
+<td style="text-align:left">HashMap支持key和value为null</td>
+<td style="text-align:left">Hashtable不支持</td>
+</tr>
+<tr>
+<td style="text-align:center">性能</td>
+<td style="text-align:left">快</td>
+<td style="text-align:left">慢，实际上已经被淘汰</td>
+</tr>
+<tr>
+<td style="text-align:center">hashcode</td>
+<td style="text-align:left">重新计算hash值<br>Objects.hashCode(key) ^ Objects.hashCode(value)</td>
+<td style="text-align:left">key的hashcode对数组长度取模<br>(hash &amp; 0x7FFFFFFF) % tab.length</td>
+</tr>
+<tr>
+<td style="text-align:center">容量</td>
+<td style="text-align:left">HashMap初始容量为16，扩容为2倍</td>
+<td style="text-align:left">Hashtable初始容量为11，扩容为2倍+1</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
 <p>HashSet、HashMap、Hashtable默认的负载极限是0.7</p>
 </blockquote>
-</li>
+<h2 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h2><ul>
+<li>HashSet、TreeSet、ArrayList、ArrayDeque、LinkedList、HashMap和TreeMap都是线程不安全的。</li>
+<li>Collections.synchronizedT(T t)可以把它们包装成线程同步的集合，如：<br><br>Map m = Collections.synchronizdMap(new HashMap());<br><br>Set s = Collections.synchronizdSet(new HashSet());</li>
 </ul>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="http://blog.csdn.net/speedme/article/details/22485681" target="_blank" rel="external">1. java中的HashTable,HashMap和HashSet</a></p>
+<p><a href="http://blog.csdn.net/xuefeng0707/article/details/40834595" target="_blank" rel="external">2.HashMap与ConcurrentHashMap的区别</a></p>
+<p><a href="http://blog.csdn.net/sinat_18268881/article/details/52549881" target="_blank" rel="external">2. 校招面试之——Java容器</a></p>
 
       
     </div>
@@ -608,7 +640,7 @@ Collecti">
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -661,7 +693,7 @@ Collecti">
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#List"><span class="nav-number">1.</span> <span class="nav-text">List</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#排序"><span class="nav-number">1.1.</span> <span class="nav-text">排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#区别"><span class="nav-number">1.2.</span> <span class="nav-text">区别</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Queue"><span class="nav-number">2.</span> <span class="nav-text">Queue</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Map"><span class="nav-number">3.</span> <span class="nav-text">Map</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#HashMap与TreeMap、LinkedHashMap性能对比"><span class="nav-number">3.1.</span> <span class="nav-text">HashMap与TreeMap、LinkedHashMap性能对比</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HashMap与Hashtable的区别"><span class="nav-number">3.2.</span> <span class="nav-text">HashMap与Hashtable的区别</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#List"><span class="nav-number">1.</span> <span class="nav-text">List</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#排序"><span class="nav-number">1.1.</span> <span class="nav-text">排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#区别"><span class="nav-number">1.2.</span> <span class="nav-text">区别</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Queue"><span class="nav-number">2.</span> <span class="nav-text">Queue</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Map"><span class="nav-number">3.</span> <span class="nav-text">Map</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#HashMap与TreeMap、LinkedHashMap性能对比"><span class="nav-number">3.1.</span> <span class="nav-text">HashMap与TreeMap、LinkedHashMap性能对比</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HashMap与Hashtable的区别"><span class="nav-number">3.2.</span> <span class="nav-text">HashMap与Hashtable的区别</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多线程"><span class="nav-number">4.</span> <span class="nav-text">多线程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">5.</span> <span class="nav-text">参考</span></a></li></ol></div>
             
 
           </div>
