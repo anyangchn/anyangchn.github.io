@@ -119,7 +119,7 @@ Vector/Stack
 动态数组实现的顺序存储，默认初始化长度为10，数组会自动扩容（1.5倍+1）；可以通过ensureCapacity(int) 和 trimToSize()调整数组大小
 双向链表存储，get方法很慢继承了Deque，可以当成双端队列用
 古老的java集合类，线程安全的，性">
-<meta property="og:updated_time" content="2017-03-16T13:35:51.903Z">
+<meta property="og:updated_time" content="2017-03-16T13:38:45.672Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java容器概述">
 <meta name="twitter:description" content="ListList是有序序列，允许插入重复元素。
@@ -513,7 +513,8 @@ Vector/Stack
 </blockquote>
 <h2 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h2><ul>
 <li>HashSet、TreeSet、ArrayList、ArrayDeque、LinkedList、HashMap和TreeMap都是线程不安全的。</li>
-<li>Collections.synchronizedT(T t)可以把它们包装成线程同步的集合，如：<br><br>Map m = Collections.synchronizdMap(new HashMap());<br><br>Set s = Collections.synchronizdSet(new HashSet());</li>
+<li>Collections.synchronizedT(T t)可以把它们包装成线程同步的集合，如：<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Map m = Collections.synchronizdMap(<span class="keyword">new</span> HashMap());&lt;br&gt;</div><div class="line">Set s = Collections.synchronizdSet(<span class="keyword">new</span> HashSet());</div></pre></td></tr></table></figure>
+</li>
 </ul>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="http://blog.csdn.net/speedme/article/details/22485681" target="_blank" rel="external">1. java中的HashTable,HashMap和HashSet</a></p>
 <p><a href="http://blog.csdn.net/xuefeng0707/article/details/40834595" target="_blank" rel="external">2.HashMap与ConcurrentHashMap的区别</a></p>
